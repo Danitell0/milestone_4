@@ -1,0 +1,17 @@
+Step 1: mask -> block size
+Count the host bits, then double that many times
+(/30 -> 2 hosts bits -> 2 * 2 = 4)
+
+Step 2: find the block start
+Take the last octet of the address you're placing, divide by the block size, drop the decimals, then multiply back
+(254 / 4 = 63.5 -> 63 -> 63 * 4 = 252)
+
+Step 3: find the block end
+start + block size - 1
+(252 + 4 - 1 = 255)
+
+Step 4: reserve the ends
+first = network addres
+last = broadcast
+
+Everything in between is usable.
